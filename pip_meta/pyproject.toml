@@ -4,7 +4,8 @@
 name = "rapids_dependencies"
 version = "0.0.0"
 description = "Common dependencies for the RAPIDS suite"
-# This version now becomes a centralized Python requirement for all RAPIDS packages
+# TODO: In theory this becomes a centralized place to define our required
+# Python version, but I'm not sure if we want to embed that information.
 requires-python = ">=3.9"
 
 [project.optional-dependencies]

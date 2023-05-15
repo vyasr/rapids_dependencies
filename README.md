@@ -72,6 +72,26 @@ We can do this by using a `git+https...` dependency on dask for pip, and for con
 That will ensure that our dependency is always consistent.
 Of course, if dask introduces a breaking change that will break our nightly packages as well, but that is no different from the current situation since ultimately any breaking change in dask means that users of our nightlies have to update to the latest nightlies of both `dask*` and RAPIDS packages.
 
+Concretely, the solution would look like replacing:
+```yaml
+  - name: rapids_dask_dependency
+    requirements:
+      run:
+        - dask >=2023.3.2
+        - dask-core >=2023.3.2
+        - distributed >=2023.3.2
+```
+with 
+```yaml
+  - name: rapids_dask_dependency
+    requirements:
+      run:
+        pip:
+            - git+https://github.com/dask/dask.git@main
+            - git+https://github.com/dask/distributed.git@main
+```
+and then reverting to a hard pin like `==2023.3.4` at release time.
+
 # Notes
 
 - I see no reasonable way to make pip and conda metapackage names align exactly, but I think that's fine.

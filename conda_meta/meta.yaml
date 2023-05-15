@@ -15,27 +15,27 @@ outputs:
     version: {{ version }}
     requirements:
       run:
-		- cupy >=12
+        - cupy >=12
   - name: rapids_numpy_dependency
     requirements:
       run:
-		- numpy >=1.21
+        - numpy >=1.21
   - name: rapids_numba_dependency
     requirements:
       run:
-		- numba >=0.56.4,<0.57
+        - numba >=0.56.4,<0.57
   - name: rapids_cuda_python_dependency
     requirements:
       host:
-		- cuda-version == {{ cuda_version }}
+        - cuda-version == {{ cuda_version }}
       run: 
-		# Note that this will require building for multiple CUDA versions
-		- pin_compatible("cuda-version", min_pin="x", max_pin="x")
-		{% if cuda_version.split('.')[0] == 1 %}
-		- cuda-python >=11.7.1,<12
-		{% else %}
-		- cuda-python >=12.0.0
-		{% endif %}
+        # Note that this will require building for multiple CUDA versions
+        - pin_compatible("cuda-version", min_pin="x", max_pin="x")
+        {% if cuda_version.split('.')[0] == 1 %}
+        - cuda-python >=11.7.1,<12
+        {% else %}
+        - cuda-python >=12.0.0
+        {% endif %}
   - name: rapids_cmake_dependency
     requirements:
       run:

@@ -20,7 +20,7 @@ cuda-python-12 = ["cuda-python >=12"]
 
 # Groups
 build = [
-    "setuptools",
+    "setuptools>=61.0.0",
     "tomli",
     "wheel",
 ]
@@ -29,7 +29,7 @@ build_binary = [
     "cython>=0.29,<0.30",
     "ninja",
     "rapids_dependencies[build]",
-    "scikit-build",
+    "scikit-build>=0.13.1,<0.17.2",
 ]
 dask = [
     "dask==2023.3.2",
